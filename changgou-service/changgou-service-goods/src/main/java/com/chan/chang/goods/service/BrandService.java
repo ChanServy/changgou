@@ -22,4 +22,5 @@ public interface BrandService {
 
     IPage<Brand> findByPageWithCondition(int page, int size, Brand brand);
 
+    List<Brand> findByCategory(Integer id);
 }

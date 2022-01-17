@@ -4,4 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chan.chang.goods.mapper.BrandMapper">
 
+<!--
+    select tb.* from tb_brand tb left join tb_category_brand tcb on tb.id = tcb.brand_id WHERE tcb.category_id = 76;
+    select tb.* from tb_category_brand tcb, tb_brand tb where tcb.category_id = 76 and tcb.brand_id = tb.id;
+-->
+<!--
+    <select id="findByCategory" resultType="com.chan.chang.goods.pojo.Brand" parameterType="int">
+        select tb.* from tb_category_brand tcb, tb_brand tb where tcb.category_id = #{id} and tcb.brand_id = tb.id;
+    </select>
+-->
 </mapper>

@@ -102,4 +102,9 @@ public class BrandServiceImpl implements BrandService {
             return brandMapper.selectPage(brandPage, queryWrapper);
         }
     }
+
+    @Override
+    public List<Brand> findByCategory(Integer id) {
+        return brandMapper.findByCategory(id);
+    }
 }

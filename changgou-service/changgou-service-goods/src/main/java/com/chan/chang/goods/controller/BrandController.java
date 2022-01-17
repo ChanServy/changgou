@@ -24,7 +24,7 @@ public class BrandController {
      * @return Result<Brand>
      */
     @GetMapping
-    public Result<Brand> findAllBrand() {
+    public Result<List<Brand>> findAllBrand() {
         List<Brand> brands = brandService.findAllBrand();
         return new Result<>(true, StatusCode.OK, "查询成功", brands);
     }
@@ -75,7 +75,7 @@ public class BrandController {
      * 品牌列表条件查询
      */
     @PostMapping("/search")
-    public Result<Brand> findBrandByCondition(@RequestBody(required = false) Brand brand) {
+    public Result<List<Brand>> findBrandByCondition(@RequestBody(required = false) Brand brand) {
         List<Brand> brands = brandService.findByCondition(brand);
         return new Result<>(true, StatusCode.OK, "查询成功", brands);
     }
@@ -100,5 +100,16 @@ public class BrandController {
     ) {
         IPage<Brand> brandIPage = brandService.findByPageWithCondition(page, size, brand);
         return new Result<>(true, StatusCode.OK, "查询成功", brandIPage);
+    }
+
+    /**
+     * 根据分类id查询品牌集合
+     * @param id 分类id
+     * @return Brand
+     */
+    @GetMapping("/category/{id}")
+    public Result<List<Brand>> findBrandByCategory(@PathVariable("id")Integer id){
+        List<Brand> brands = brandService.findByCategory(id);
+        return new Result<>(true,StatusCode.OK,"success",brands);
     }
 }

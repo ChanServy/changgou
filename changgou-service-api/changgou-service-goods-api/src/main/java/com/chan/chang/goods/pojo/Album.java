@@ -1,27 +1,21 @@
 package com.chan.chang.goods.pojo;
 
-import javax.persistence.*;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
-/****
- * @Author:admin
- * @Description:Album构建
- * @Date 2019/6/14 19:13
- *****/
-@Table(name = "tb_album")
+@TableName(value = "tb_album")
 public class Album implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @TableId(type = IdType.AUTO)
     private Long id;//编号
 
-
-    @Column(name = "title")
     private String title;//相册名称
-    @Column(name = "image")
+
     private String image;//相册封面
-    @Column(name = "image_items")
+
     private String imageItems;//图片列表
 
 
